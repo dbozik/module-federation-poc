@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'shell';
+  public constructor(
+    private readonly router: Router,
+  ) {
+  }
+
+  public goToModule1(): void {
+    this.router.navigate(['module1']);
+  }
+
+  public goToShell(): void {
+    this.router.navigate(['']);
+  }
 }
