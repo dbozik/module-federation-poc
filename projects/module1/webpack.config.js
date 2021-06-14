@@ -9,7 +9,7 @@ sharedMappings.register(
 
 module.exports = {
   output: {
-    uniqueName: "shell",
+    uniqueName: "module1",
     publicPath: "auto"
   },
   optimization: {
@@ -23,9 +23,11 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
 
-        // For hosts (please adjust)
-        remotes: {
-            "module1": "module1@http://localhost:3000/remoteEntry.js",
+        // For remotes (please adjust)
+        name: "module1",
+        filename: "remoteEntry.js",
+        exposes: {
+            './Component': './projects/module1/src/app/app.component.ts',
         },
 
         shared: {

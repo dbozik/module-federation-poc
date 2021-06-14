@@ -262,7 +262,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/module1",
             "index": "projects/module1/src/index.html",
@@ -277,7 +277,9 @@
             "styles": [
               "projects/module1/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "projects/module1/webpack.config.js",
+            "commonChunk": false
           },
           "configurations": {
             "production": {
@@ -299,7 +301,8 @@
                   "with": "projects/module1/src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "extraWebpackConfig": "projects/module1/webpack.prod.config.js"
             },
             "development": {
               "buildOptimizer": false,
@@ -313,16 +316,21 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "module1:build:production"
+              "browserTarget": "module1:build:production",
+              "extraWebpackConfig": "projects/module1/webpack.prod.config.js"
             },
             "development": {
               "browserTarget": "module1:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "extraWebpackConfig": "projects/module1/webpack.config.js",
+            "port": 3000
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -331,7 +339,7 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "ngx-build-plus:karma",
           "options": {
             "main": "projects/module1/src/test.ts",
             "polyfills": "projects/module1/src/polyfills.ts",
@@ -345,7 +353,8 @@
             "styles": [
               "projects/module1/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "projects/module1/webpack.config.js"
           }
         }
       }
