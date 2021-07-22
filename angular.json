@@ -31,7 +31,12 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/shell/src/favicon.ico",
-              "projects/shell/src/assets"
+              "projects/shell/src/assets",
+              {
+                "glob": "**/*",
+                "input": "projects/mf-shared/assets",
+                "output": "/assets-shared"
+              }
             ],
             "styles": [
               "projects/shell/src/styles.scss"
@@ -143,7 +148,12 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/module1/src/favicon.ico",
-              "projects/module1/src/assets"
+              "projects/module1/src/assets",
+              {
+                "glob": "**/*",
+                "input": "projects/mf-shared/assets",
+                "output": "/assets-shared"
+              }
             ],
             "styles": [
               "projects/module1/src/styles.scss"
