@@ -1,6 +1,12 @@
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const mf = require("@angular-architects/module-federation/webpack");
+const mf2 = require("@angular-architects/module-federation");
 const path = require("path");
+// const share = mf.share;
+
+console.log("mf");
+console.dir(mf);
+console.dir(mf2);
 
 const sharedMappings = new mf.SharedMappings();
 sharedMappings.register(
@@ -30,14 +36,14 @@ module.exports = {
             './Module': './projects/module1/src/app/app.module.ts',
         },
 
-        shared: {
+        shared: share({
           "@angular/core": { singleton: true, strictVersion: true },
           "@angular/common": { singleton: true, strictVersion: true },
           "@angular/common/http": { singleton: true, strictVersion: true },
           "@angular/router": { singleton: true, strictVersion: true },
 
           ...sharedMappings.getDescriptors()
-        }
+        })
 
     }),
     sharedMappings.getPlugin()

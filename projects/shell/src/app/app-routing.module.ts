@@ -5,12 +5,20 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'module1',
-    // loadChildren: () => loadRemoteModule({
-    //   remoteEntry: 'http://localhost:3000/remoteEntry.js',
-    //   remoteName: 'module1',
-    //   exposedModule: './module1'
-    // }),
-    loadChildren: () => import('module1/Module').then(m => m.AppModule)
+    loadChildren: () => loadRemoteModule({
+      remoteEntry: 'http://localhost:3000/remoteEntry.js',
+      remoteName: 'module1',
+      exposedModule: './Module'
+    }).then(m => {
+      console.log('im here');
+      console.dir(m);
+
+      return m.AppsModule;
+    }).catch(error => {
+      console.log('error');
+      console.dir(error);
+    }),
+    // loadChildren: () => import('module1/Module').then(m => m.AppModule)
   },
 ];
 
@@ -18,4 +26,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
