@@ -13,7 +13,7 @@ const routes: Routes = [
       console.log('im here');
       console.dir(m);
 
-      return m.AppsModule;
+      return m.AppModule;
     }).catch(error => {
       console.log('error');
       console.dir(error);
