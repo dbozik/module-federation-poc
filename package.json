@@ -6,7 +6,7 @@
     "start": "ng serve module1 & ng serve shell -o",
     "start:shell": "ng serve shell",
     "start:module1": "ng serve module1",
-    "build": "ng build",
+    "build": "ng build shell --prod && ng build module1 --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
