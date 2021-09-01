@@ -9,16 +9,7 @@ const routes: Routes = [
       remoteEntry: 'http://localhost:3000/remoteEntry.js',
       remoteName: 'module1',
       exposedModule: './Module'
-    }).then(m => {
-      console.log('im here');
-      console.dir(m);
-
-      return m.AppModule;
-    }).catch(error => {
-      console.log('error');
-      console.dir(error);
-    }),
-    // loadChildren: () => import('module1/Module').then(m => m.AppModule)
+    }).then(m => m.Module1Module),
   },
 ];
 
