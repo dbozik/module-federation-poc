@@ -11,8 +11,7 @@
     "sourceMap": true,
     "paths": {
       "mf-shared": [
-        "dist/mf-shared/mf-shared",
-        "dist/mf-shared"
+        "projects/mf-shared/src/public-api.ts"
       ]
     },
     "declaration": false,
